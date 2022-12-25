@@ -27,7 +27,7 @@ def watering(sensorID,pumpeID,pflanzeID,gießzeit):
         count1 += 1
         
         with open('log.txt', 'a') as f: #open txt file
-        f.write('\n'.join(f"{dt_string} : plant {pflanzeID} watered")) #write content to txt file
+            f.write('\n'.join(f"{dt_string} : plant {pflanzeID} watered")) #write content to txt file
         
         print(f"plant {pflanzeID} watered " + str(count1) + " times")
     else:
