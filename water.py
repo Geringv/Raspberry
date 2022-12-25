@@ -6,7 +6,8 @@ from datetime import datetime
 #variables
 sensoren = [17,27]
 pumpen = [5,6]
-count1,count2 = 0
+count1 = 0
+count2 = 0
 now = datetime.now() #current date and time
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S") #formatting
 
