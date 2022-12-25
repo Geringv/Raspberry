@@ -15,11 +15,11 @@ GPIO.setup(pumpen,GPIO.OUT,initial = 1)
 
 #variable function for watering
 def watering(sensorID,pumpeID,pflanzeID,gießzeit):
-    if GPIO.input(sensoren(sensorID)) == 1: #check moisture sensor for dryness
+    if GPIO.input(sensoren[sensorID]) == 1: #check moisture sensor for dryness
         print(f"plant {pflanzeID} dry")
-        GPIO.output(pumpen(pumpeID),0) #turn pump on
+        GPIO.output(pumpen[pumpeID],0) #turn pump on
         sleep(gießzeit) #water plant for x seconds
-        GPIO.output(pumpen(pumpeID),1) #turn pump off
+        GPIO.output(pumpen[pumpeID],1) #turn pump off
         count1 += 1
         print(f"plant {pflanzeID} watered " + str(count1) + " times")
     else:
