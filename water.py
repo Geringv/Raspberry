@@ -1,11 +1,15 @@
 #import dependencies
 import RPi.GPIO as GPIO
 from time import sleep
+from datetime import datetime
 
 #variables
 sensoren = [17,27]
 pumpen = [5,6]
 count1,count2 = 0
+now = datetime.now() #current date and time
+dt_string = now.strftime("%d/%m/%Y %H:%M:%S") #formatting
+
 
 #numbering
 GPIO.setmode(GPIO.BCM)
@@ -21,6 +25,10 @@ def watering(sensorID,pumpeID,pflanzeID,gießzeit):
         sleep(gießzeit) #water plant for x seconds
         GPIO.output(pumpen[pumpeID],1) #turn pump off
         count1 += 1
+        
+        with open('log.txt', 'a') as f: #open txt file
+        f.write('\n'.join(f"{dt_string} : plant {pflanzeID} watered")) #write content to txt file
+        
         print(f"plant {pflanzeID} watered " + str(count1) + " times")
     else:
         print(f"plant {pflanzeID} wet")
